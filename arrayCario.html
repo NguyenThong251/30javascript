@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array Cario</title>
+  </head>
+  <body>
+    <h3>Array Cario</h3>
+  </body>
+  <script>
+    const inventors = [
+      { first: "Thong", last: "VietNam", year: "2004", passed: "2104" },
+      { first: "Lan", last: "My", year: "2002", passed: "2104" },
+      { first: "Huy", last: "Uc", year: "2002", passed: "2102" },
+      { first: "Cuong", last: "VietNam", year: "2004", passed: "2102" },
+      { first: "Phuc", last: "VietNam", year: "2004", passed: "2104" },
+    ];
+    const people = [
+      "Beck,Glenn",
+      "backer,Carl",
+      "Backett,Samuel",
+      "Beddoes,Mick",
+    ];
+
+    //1. array filter()
+    const fifteen = inventors.filter(
+      (inventor) => inventor.year >= 2004 && inventor.year < 2105
+    );
+    console.table(fifteen);
+    //2.map()
+    const fullname = inventors.map(
+      (inventor) => `${inventor.first} ${inventor.last}`
+    );
+    console.log(fullname);
+    //3. sort
+    // const ordered = inventors.sort(function (firstPerson, secondPerson) {
+    //   if (firstPerson.year > secondPerson.year) {
+    //     return 1;
+    //   } else {
+    //     return -1;
+    //   }
+    // });
+    // const ordered = inventors.sort((a, b) => (a.year > b.year ? 1 : -1));
+    // console.table(ordered);
+    // //4 reduce
+    // var tottalyear = 0;
+    // for (var i = 0; i < inventors.length; i++) {
+    //   tottalyear += inventors[i].year;
+    // }
+    const tottalyear = inventors.reduce((total, inventor) => {
+      return total + (inventor.passed - inventor.year);
+    }, 0);
+    console.log(tottalyear);
+    // sort year live
+    const oldest = inventors.sort(function (a, b) {
+      const lastGuy = a.passed - a.year;
+      const nextGuy = b.passed - b.year;
+      return lastGuy > nextGuy ? -1 : 1;
+    });
+    console.log(oldest);
+    //7. sort exercise
+    const alpha = people.sort((lastOne, nextOne) => {
+      const [aLast, aFirst] = lastOne.split(", ");
+      const [bLast, bFirst] = lastOne.split(", ");
+      return aLast > bLast ? -1 : 1;
+    });
+    console.log(alpha);
+    //8.reduce  exercise ddeem
+    const data = [
+      "chó",
+      "chó",
+      "mèo",
+      "chó",
+      "mèo",
+      "chó",
+      "mèo",
+      "chó",
+      "mèo",
+      "chó",
+      "mèo",
+      "chó",
+    ];
+    const transportation = data.reduce(function (obj, item) {
+      if (!obj[item]) {
+        obj[item] = 0;
+      }
+      obj[item]++;
+      return obj;
+    }, {});
+    console.log(transportation);
+  </script>
+</html>

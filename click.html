@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Thông báo mua hàng</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+
+      #buy-button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Trang mua hàng</h1>
+    <button id="buy-button">Mua hàng</button>
+
+    <script>
+      document
+        .getElementById("buy-button")
+        .addEventListener("click", function () {
+          alert("Mua hàng thành công!");
+        });
+    </script>
+  </body>
+</html>
